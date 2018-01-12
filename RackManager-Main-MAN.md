@@ -2,22 +2,19 @@ Copyright 2017 Dell, Inc. All rights reserved.
 
 # DSS9000 RackManager and RackManager Toolkit Docs
 
-This is a ***Private Dell ESI Github repo***  containing published documentation for the DSS9000 RackManager.
+This is a ***Public Dell ESI Github repo***  containing published documentation for the DSS9000 RackManager.
 
 
 * This doc is the top-level MAN page for the DSS9000 RackManager and RackManager Toolkit.
-* the general RackManager ***Concept*** slide deck is at ./***RackManager-Overview.pdf***
-* the ***Redfish-Users-Guide*** with APIs supported is at ./***Redfish-Users-Guide.md*** and ***Redfish-Users-Guide.pdf***
-* Three sub-folders contain detail man pages referenced herein
+* The ***Redfish-API-Users-Guide-for-DSS9000-Rackmanager.md*** contains a general description of Redfish plus details regarding the Redfish service running on DSS9000 RackManager. 
+* Two sub-folders contain detail man pages referenced herein
   * ./man_pages -- contains all of the user utility command MAN pages
   * ./service_man_pages -- contains MAN pages for RMTK services managed by systemd--being updated and not published yet
-  * ./dev_spec -- contains development specs with additional implementation detail--being updated and not published yet
-* All documents are natively in Github Markdown format (except concept deck) -- and we are adding pdf bundles 
-  * docs in man_pages, service_man_pages, and dev_specs will soon be available ***also*** in a single indexed pdf
-  * a pdf version of Redfish-Users-Guide is also available here
-  * These are easy to browse on Github natively --- it rendors Markdown fast and good, and also renders pdf (but slow)
-  * you can download a markdown reader from:   `www.markdownpad.com`,    * free for the basic reader.   
-  * you can download the entire repo to zip or with a git clone
+* All documents are natively in Github Markdown format (except concept deck) 
+  * These are easy to browse on Github natively --- it rendors Markdown fast and good
+  * Or after opening the Markdown doc in Chrome, you can Print to a pdf to get a PDF version of a doc
+  * you can download the markdown files and get a free markdown reader from:   `www.markdownpad.com`,   
+  * you can also download the entire repo to zip or with a git clone
 
 ---
 
