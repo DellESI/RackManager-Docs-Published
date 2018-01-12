@@ -6,7 +6,7 @@ This is a ***Public Dell ESI Github repo***  containing published documentation 
 
 
 * This doc is the top-level MAN page for the DSS9000 RackManager and RackManager Toolkit.
-* The ***Redfish-API-Users-Guide-for-DSS9000-Rackmanager*** contains a general description of Redfish plus details regarding the Redfish service running on DSS9000 RackManager. 
+* The ***Redfish-API-Users-Guide-for-DSS9000-Rackmanager.md*** contains a general description of Redfish plus details regarding the Redfish service running on DSS9000 RackManager. 
 * Two sub-folders contain detail man pages referenced herein
   * ./man_pages -- contains all of the user utility command MAN pages
   * ./service_man_pages -- contains MAN pages for RMTK services managed by systemd--being updated and not published yet
