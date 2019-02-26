@@ -1,5 +1,4 @@
-
- Copyright 2016 Dell, Inc. All rights reserverd
+Copyright &copy; 2016-2018 Dell Inc. or its subsidiaries. All rights reserved.
  
 # RMMgtNetworkStart -- RackManager Namespace Networking Service V1
 

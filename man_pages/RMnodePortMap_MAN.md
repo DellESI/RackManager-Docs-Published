@@ -1,4 +1,4 @@
-Copyright 2017 Dell, Inc. All rights reserved.
+Copyright &copy; 2017-2018 Dell Inc. or its subsidiaries. All rights reserved.
 
 # RMnodePortMap
 ---
@@ -160,12 +160,21 @@ The show subcommand also requires a target:
 * Outgoing port forwarding rules can only be applied to one mgmt interface (mgmt1 or mgmt2) per protocol
   * For instance, you can configure DNS packets from a node to route out either mgmt1 or mgmt2, not both
 * Outgoing port forwarding requires additional configuring to the node itself:
-  * Node must be configured to route outgoing traffic internally through the Rackmanager instead of its own external port
-  * To set a node's default gateway to the RackManager with racadm:
-    * `racadm -r Rack1-Block1-Sled1-Node1 -u <user> -p <passwd> set iDRAC.IPv4.Gateway 10.253.4.1`
-  * To set a node's DNS server to a server on the RM's mgmt1 or mgmt2 network with racadm:
-    * `racadm -r Rack1-Block1-Sled1-Node1 -u <user> -p <passwd> set iDRAC.IPv4.DNS1 <DNS_IP_ADDRESS>`
+  * Default Gateway:
+    * Node must be configured to route outgoing traffic internally through the Rackmanager instead of its own external port
+    * To get a node's default gateway via racadm:
+      * `racadm -r Rack1-Block1-Sled1-Node1 -u <user> -p <passwd> get iDRAC.IPv4.Gateway`
+    * To set a node's default gateway to the RackManager with racadm:
+      * `racadm -r Rack1-Block1-Sled1-Node1 -u <user> -p <passwd> set iDRAC.IPv4.Gateway 10.253.4.1`
+  * DNS:
+    * If forwarding DNS packets from a node through and out the RackManager, you may need to set the node's DNS server
+    * To get a node's DNS server settings via racadm:
+      * `racadm -r Rack1-Block1-Sled1-Node1 -u <user> -p <passwd> get iDRAC.IPv4.DNS1`
+      * `racadm -r Rack1-Block1-Sled1-Node1 -u <user> -p <passwd> get iDRAC.IPv4.DNS2`
+    * To set a node's DNS server to a server on the RM's mgmt1 or mgmt2 network with racadm:
+      * `racadm -r Rack1-Block1-Sled1-Node1 -u <user> -p <passwd> set iDRAC.IPv4.DNS1 <DNS_IP_ADDRESS>`
 * It can take up to 20 seconds between when the target is enabled and when the RMNodePortMapService actually applies the rules
 
 ## Known Issues:
-* None
+* When using the `show` command to display applied port forwarding rules, occasionally the applied rules appear as duplicated.
+  This behaviour is known and has no functional impact.

@@ -1,4 +1,4 @@
-Copyright 2016 Dell, Inc. All rights reserved.
+Copyright &copy; 2016-2018 Dell Inc. or its subsidiaries. All rights reserved.
 
 # RMhello -- an example python utility 
 ---

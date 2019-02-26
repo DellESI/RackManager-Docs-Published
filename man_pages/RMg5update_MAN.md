@@ -1,6 +1,6 @@
-Copyright 2016 Dell, Inc. All rights reserved.
+Copyright &copy; 2016-2018 Dell Inc. or its subsidiaries. All rights reserved.
 
-# RMg5update -- a BASH command utility used to update the G5 infrastructure firmware
+# RMg5update -- a BASH utility used to update the G5 infrastructure firmware
 ---
 
 ## About
@@ -68,6 +68,11 @@ Usage:
                             -vvv   -- verbose level-3 dumps detailed debug info during execution
         -M             --- update the mc.conf and redfish.conf on the MC from MC.conf and G5Redfish.conf on
                            the RM after all other updates to insure that the managed MC has RM config settings
+                           
+   Notes:
+       * Following any update with RMg5update, RMconfig of the RMg5mc subsystem should be executed in order
+         to re-sync the RM with the MC.
+         * RMconfig [-vvv] -F -s RMg5mc config
 ```
 
 ### To run:
@@ -77,6 +82,8 @@ Usage:
   * ex: from the RM, copy the package from another server to the RM
   *   `scp <mylogin>@<myServer>:/path/to/myPkgFiles/<packagename>  /var/g5updates/.`
 * enter `RMg5update [OPTIONS] /var/g5updates/<packagename>`
+* once complete, run RMconfig on the RMg5mc subsystem
+  * `RMconfig [-vvv] -F -s RMg5mc config`
 
 ### Examples:
 
@@ -149,6 +156,9 @@ When using the switch fw directly:
 * It is installed on the RM at `/opt/dell/rm-tools/RMg5update/*`
 * The first line of the program includes a sheebang line `#!/usr/bin/bash`
 * RMg5update specific logs can be found at `/var/log/rackmanager/RMg5update.log`
+* Following any update with RMg5update, RMconfig of the RMg5mc subsystem should be executed in order
+  to re-sync the RM with the MC.
+  * RMconfig [-vvv] -F -s RMg5mc config
 
 ## See Also:
 * RMconfig

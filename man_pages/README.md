@@ -1,3 +1,5 @@
+Copyright &copy; 2018 Dell Inc. or its subsidiaries. All rights reserved.
+
 # RackManager Toolkit:  utility command MAN Pages
 This folder contains MAN pages for ***Utility Commands*** that are implemented as part of the RackManager Toolkit:
 
@@ -11,5 +13,16 @@ This folder contains MAN pages for ***Utility Commands*** that are implemented a
 * RMg5cli -- a utility to connect to the DSS9000 MC and execute legacy G5 CLI commands
 * RMredfishtool -- a version of redfishtool CLI that is optimized for the RackManager toolkit on DSS9000
 * RMbiosupdate -- a utility to update the Stark RackManager's BIOS ROM boot firmware
+* RMadmin -- provides several helpful debug and admin subcommands
 * RMversion -- displays the RM Toolkit version
+
+
+## RackManager Toolkit specific Utilities:
+* RMversion     `-- see /man_pages/RMversion_MAN.md`
+* RMconfig      `-- see /man_pages/RMconfig_MAN.md`
+* RMg5cli       `-- see /man_pages/RMg5cli_MAN.md`
+* RMredfishtool `-- see /man_pages/RMredfishtool.md`
+* RMg5update    `-- see /man_pages/RMg5update_MAN.md`
+* RMbiosupdate  `-- see /man_pages/RMbiosupdate_MAN.md`
+* RMadmin       `-- see /man_pages/RMadmin_MAN.md`
 

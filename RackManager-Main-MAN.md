@@ -1,4 +1,4 @@
-Copyright 2017 Dell, Inc. All rights reserved.
+Copyright &copy; 2017-2018 Dell Inc. or its subsidiaries. All rights reserved.
 
 # DSS9000 RackManager and RackManager Toolkit Docs
 
@@ -6,7 +6,7 @@ This is a ***Public Dell ESI Github repo***  containing published documentation 
 
 
 * This doc is the top-level MAN page for the DSS9000 RackManager and RackManager Toolkit.
-* The ***Redfish-API-Users-Guide-for-DSS9000-RackManager.md*** contains a general description of Redfish plus details regarding the Redfish service running on DSS9000 RackManager. 
+* The ***Redfish-API-Users-Guide-for-DSS9000-Rackmanager.md*** contains a general description of Redfish plus details regarding the Redfish service running on DSS9000 RackManager. 
 * Two sub-folders contain detail man pages referenced herein
   * ./man_pages -- contains all of the user utility command MAN pages
   * ./service_man_pages -- contains MAN pages for RMTK services managed by systemd--being updated and not published yet
@@ -37,12 +37,15 @@ The DSS9000 ***RackManager*** is an embedded CentOS server in the DSS9000 rack t
   * Two external RJ45 Ethernet Interfaces to connect to customer networks:
     * for the DSS9000 integrated Stark RM, these ports are labeled Mgmt1 and Mgmt2 on the IM module in the first PowerBay
     * for external 1U RMs, these two ports are most likely LOM2 and LOM3 of the external server
-      * LOM1 will be used to connect to the DSS9000's IM module
+      * LOM1 will be used to connect to the DSS9000's IM module.
+    * ***Note: The two Management network interfaces (Mgmt1 & Mgmt2) on the same subnet is not a supported feature for RMTK.***
+
   * A serial console to the RM is also supported:
     * for the DSS9000 integrated Stark RM, a USB-Serial interface on the IM module can be used to connect to either the Stark RM's serial port.
     * for external 1U RMs, the serial console connects to the BMC via the serial MUX -- see the server hardware guide.
 
 * ***RackManager*** runs the off-the-shelf CentOS 7 Minimal Operating System:
+  * "off-the-shelf" meaning no OS configuration changes were made outside those necessary for RMTK functionality
   * will pre-installed at the factory on the Stark RackManager along with the RackManager Toolkit
   * can be re-installed or updated using normal CentOS yum update facilities
   

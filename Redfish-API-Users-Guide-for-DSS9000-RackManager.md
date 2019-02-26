@@ -1,21 +1,21 @@
-Copyright 2017 Dell, Inc. All rights reserved.
+Copyright &copy; 2017-2018 Dell Inc. or its subsidiaries. All rights reserved.
 
 # ***Redfish*** API Users Guide for the DSS9000 ***RackManager*** 
-Users Guide version: 1.1.0  -- for RMTK releases: v1.0.x, 1.1,x
+Users Guide version: 1.1.0 -- for RMTK releases: v1.0.x, v1.1.x
 
 ---
 
 ## Introduction
-The Redfish Service running on the DSS9000 ***RackManager*** provides a multi-node DMTF compliant Redfish API interface for managing 
+The Redfish Service running on the DSS9000 ***RackManager*** provides a multi-node DMTF-compliant Redfish API interface for managing 
 all of the hardware in a DSS9000 rack.
 This Redfish service  is included in the "RackManager Toolkit".
 
 ---
 
 ## About the ***RackManager*** "RedDrum" Redfish Service Implementation
-The ***RackManager Redfish Service*** is based on the  ***RedDrum*** Redfish Service architecture and core code:
+The ***RackManager Redfish Service*** is based on the ***RedDrum*** Redfish Service architecture and core code:
 
-* The ***httpd front-end*** uses standard Centos7.1 httpd to process incoming http and https requests.
+* The ***httpd front-end*** uses standard Centos 7.1 httpd to process incoming http and https requests.
   * httpd handles all multi-threaded external http processing and SSL processing
   * Virtual servers are implemented for port 80 http and 443 https
   * Each of these virtual servers implements a reverse proxy to forward all "Redfish" APIs to the separate **RedfishService front-end**
@@ -88,34 +88,34 @@ spec, but rather read from the interface.
  
 ### DMTF Redfish Links and Resources
 In addition to the Redfish Standard and schemas, the DMTF standards body has published many artifacts about the Redfish API:
-* Download Specification, Schema, and Tutorials/Education decks at: `http://www.dmtf.org/redfish`
+* Download Specification, Schema, and Tutorials/Education decks at: http://www.dmtf.org/redfish
   * Click the latest “DSP0266” link for the latest release of the Redfish Specification
-  * Click the latest DSP8011 link to get a zip file of all of the latest Schema Files (
+  * Click the latest DSP8011 link to get a zip file of all of the latest Schema Files
   * Near the bottom of the page, Click `<Introduction to Redfish>` under `Tutorials and Education` for the Redfish Overview and 
   Introduction slide deck (a good starting point)
   
 * Published Redfish Schema files:
-  * ALL Redfish V1 schema versions are at: `http://redfish.dmtf.org/schemas/v1/`
-  * The latest versions (including latest erratas) are at: `http://redfish.dmtf.org/schemas/`
+  * ALL Redfish V1 schema versions are at: http://redfish.dmtf.org/schemas/v1/
+  * The latest versions (including latest erratas) are at: http://redfish.dmtf.org/schemas/
   
-* Redfish Developer Information Site: `http://redfish.dmtf.org`
+* Redfish Developer Information Site: http://redfish.dmtf.org
   * Has many links to mockups, YouTube videos, White Papers, Presentations, Webinars, etc.
 
 * DMTF Open Source Tools Repos at: https://github.com/DMTF
-  * `https://github.com/DMTF/Redfishtool`  -- a simple Redfish CLI tool
-  * `https://github.com/DMTF/Redfish-Mockup-Server` 
-  * `https://github.com/DMTF/Redfish-Mockup-Creator`
-  * `https://github.com/DMTF/Redfish-Service-Validator`
-  * `https://github.com/DMTF/Redfish-Interface-Emulator`
-  * `https://github.com/DMTF/Redfish-Service-Conformance-Check`
-  * `https://github.com/DMTF/Redfish-Tools`
+  * https://github.com/DMTF/Redfishtool -- a simple Redfish CLI tool
+  * https://github.com/DMTF/Redfish-Mockup-Server 
+  * https://github.com/DMTF/Redfish-Mockup-Creator
+  * https://github.com/DMTF/Redfish-Service-Validator
+  * https://github.com/DMTF/Redfish-Interface-Emulator
+  * https://github.com/DMTF/Redfish-Service-Conformance-Check
+  * https://github.com/DMTF/Redfish-Tools
     * has DMTF internally used tools: csdl-to-json-converter, odata-csdl-validator, and doc-generator
     
-* BrightTalk webinars: `https://www.dmtf.org/education/webinars`
+* BrightTalk webinars: https://www.dmtf.org/education/webinars
   * Introduction to Redfish (25min)
   * Redfish Data Model Deep Dive (55min)
   
-* Public User Group / Forum: `http://www.redfishforum.com`
+* Public User Group / Forum: http://www.redfishforum.com
 
 * If you have feedback contact your Dell account representative or you may provide feedback directly through the DMTF feedback 
    portal: http://www.dmtf.org/standards/feedback
@@ -235,15 +235,15 @@ The RackManager RedfishService constructs collection IDs (e.g. <chasId> ) by anc
 ### DSS9000 Chassis collection URI and ID Construction
 The different chassis IDs for the rack, blocks, sleds, or powerBays would look like:
 ```
-     Rack<r> -- for the entire rack: ex: “Rack1”
+    Rack<r> -- for the entire rack: ex: “Rack1”
     Rack<r>-Block<b> – for DSS9000 Blocks ex: “Rack1-Block2”
-    Rack<r>-PowerBay<p> --for powerBays ex: “Rack1-PowerBay-1
-    Rack<r>-Block<b>-Sled<s>” -- for sleds , ex “Rack1-Block2-Sled3”
+    Rack<r>-PowerBay<p> --for powerBays ex: “Rack1-PowerBay-1"
+    Rack<r>-Block<b>-Sled<s> -- for sleds, ex: “Rack1-Block2-Sled3”
 ```
 
 So the following are example URIs of chassis in RackManager
 ```
-^/redfish/v1/ Chassis /Rack1 where <chasId> = “Rack1”
+    ^/redfish/v1/ Chassis /Rack1 where <chasId> = “Rack1”
     ^/redfish/v1/ Chassis /Rack1-PowerBay1 where <chasId> = “Rack1-PowerBay1”
     ^/redfish/v1/ Chassis /Rack1-Block1 where <chasId> = “Rack1-Block1”
     ^/redfish/v1/ Chassis /Rack1-Block1-Sled2 where <chasId> = “Rack1-Block1-Sled2”
@@ -252,37 +252,36 @@ So the following are example URIs of chassis in RackManager
 ### DSS9000 Systems collection URI and ID Construction
 The RM Redfish Service constructs URIs and Id for members of the “Systems” collection in a similar way.
 ```
-   The Systems collection is at the URI: `^/redfish/v1/Systems`
-   Specific members of the Systems collection are at `^/redfish/v1/Systems/<sysId>`:
-       Where <sysId> is assigned by the Redfish service and constructed in the form:
-           “Rack<r>-Block<b>-Sled<s>-Node-<n>”
-   The following is an example URI for an entry in the Systems collection
-       ^/redfish/v1/Systems/Rack1-Block2-Sled4-Node1
-   Note: This is actually the computer system that is in Block2, Sled4
+    The Systems collection is at the URI: ^/redfish/v1/Systems
+    Specific members of the Systems collection are at ^/redfish/v1/Systems/<sysId>:
+        Where <sysId> is assigned by the Redfish service and constructed in the form:
+            Rack<r>-Block<b>-Sled<s>-Node-<n>
+    The following is an example URI for an entry in the Systems collection
+        ^/redfish/v1/Systems/Rack1-Block2-Sled4-Node1
+    Note: This is actually the computer system that is in Block2, Sled4
 ```
  
-### DSS9000  Managers collection URI and ID Construction
+### DSS9000 Managers collection URI and ID Construction
 The RM Redfish Service constructs URIs and Id for members of the “Managers” collection in a similar way.
 
 ```
-     The Systems collection is at the URI: ^/redfish/v1/Managers
-     Specific members of the Systems collection are at ^/redfish/v1/Managers/<mgrId>:
-         Where <mgrId> is assigned by the Redfish service and constructed in the form:
-             “Rack<r>-{Block|PowerBay|Rfu} <n>-{MC1|BC|IM}” 
-             “RackManager"
-     The following are example URIsfor an entries in the Managers collection:
-         "RackManager"
-         “Rack1-PowerBay1-MC1”
-         “Rack1-PowerBay1-Im”
-         “Rack1-Block2-Bc”
+    The Systems collection is at the URI: ^/redfish/v1/Managers
+    Specific members of the Systems collection are at ^/redfish/v1/Managers/<mgrId>:
+        Where <mgrId> is assigned by the Redfish service and constructed in the form:
+            Rack<r>-{Block|PowerBay|Rfu}<n>-{MC1|Bc|Im}
+            RackManager
+    The following are example URIs for an entries in the Managers collection:
+        RackManager
+        Rack1-PowerBay1-MC1
+        Rack1-PowerBay1-Im
+        Rack1-Block2-Bc
          
-     So the following are example URIs of Managers in RM:
-        ^/redfish/v1/Managers/RackManager
-        ^/redfish/v1/Managers/Rack1-PowerBay1-MC1        --where <mgrId> = “Rack1-PowerBay1-MC1”
-        ^/redfish/v1/Managers/ Rack1-PowerBay1-Im        -- where <mgrId> = “Rack1-PowerBay1-Im”
-        ^/redfish/v1/Managers/ Rack1-Block2-Bc           --where <mgrId> = “Rack1-Block2-Bc”
-       Note: Similar construction semantics are used for other resources.
-
+    So the following are example URIs of Managers in RM:
+       ^/redfish/v1/Managers/RackManager
+       ^/redfish/v1/Managers/Rack1-PowerBay1-MC1       --where <mgrId> = Rack1-PowerBay1-MC1
+       ^/redfish/v1/Managers/Rack1-PowerBay1-Im        --where <mgrId> = Rack1-PowerBay1-Im
+       ^/redfish/v1/Managers/Rack1-Block2-Bc           --where <mgrId> = Rack1-Block2-Bc
+    Note: Similar construction semantics are used for other resources.
 ```
 
 ## RackManager Redfish Configuration 
@@ -339,7 +338,7 @@ The Redfish Specification defines two types of authentication that must be suppo
 * HTTP Basic Authentication
 * Redfish Session Authentication
 
-THe RackManager Redfish service support both authentication mechanisms – and no others currently.
+The RackManager Redfish service support both authentication mechanisms – and no others currently.
 ***However***, since the implementation is on Centos7.1 Linux, it is very easy to extend authentication to other methods.  Contact Dell Support or sales for help if you need another authentication mechanism.
 
 * **Basic authentication:** -- 
@@ -347,7 +346,7 @@ HTTP Basic Auth is the standard BasicAuth defined by the HTTP RFC and supported 
 Since it passes credentials unencrypted, it is only allowed if HTTPS is uses.
 * **Redfish Session authentication:** -- 
 Redfish Session Auth is defined in the Redfish specification, and the RM Redfish service strictly complies with the definition. The client first sends a POST to the Sessions collections to “login” and in response receives an Auth Token that it can use put in the http header on subsequent requests. To logout, the client sends a DELETE to the session collection entry that was created during the login. Refer to the Redfish specification for details.
-The DMTF Redfishtool CLI at `github.com/DMTF/Redfishtool` supports this authentication if an implementation reference is needed.
+The DMTF Redfishtool CLI at https://github.com/DMTF/Redfishtool supports this authentication if an implementation reference is needed.
 
 ## Roles and Privileges
 #### Privileges
@@ -396,14 +395,11 @@ The API details include:
 * Request and Response Data
 * The HTTP Status code returned if success
 * The Schema reference of the related resource in form
-```
-<Namespace>.<namespaceVersion>.<ResourceType> for resources, and
-<Namespace>.<ResourceType> for collection resources
-(collections do not have a versioned namespace in Redfish)
-o The Namespace relates to the schema file that defines the resource
-o The Namespace version is a string that defines the version of the Namespace that the RM Resource was built from. This is an appendix to the filename (for JsonSchema files. For CSDL XML Schema Files it is defined as a specific namespace inside the NameSpace schema file.
-o The ResourceType is the Type of the specific resource defined in the schema file.
-```
+  * For resources: `<Namespace>.<namespaceVersion>.<ResourceType>`
+  * For collection resources: `<Namespace>.<ResourceType>` (collections do not have a versioned namespace in Redfish)
+  * The Namespace relates to the schema file that defines the resource
+  * The Namespace version is a string that defines the version of the Namespace that the RM Resource was built from. This is an appendix to the filename (for JsonSchema files. For CSDL XML Schema Files it is defined as a specific namespace inside the NameSpace schema file.
+  * The ResourceType is the Type of the specific resource defined in the schema file.
 * All schema files can be found at the DMTF Redfish SchemaFile URL at http://redfish.dmtf.org/schemas/v1/
 * Regarding the RackManager  URIs in the API table below:
   * As stated earlier in this spec, Redfish is a hypermedia API and all Redfish URIs except for the four “Redfish Defined URIs” are constructed by the service and not part of the standard. Therefore clients should obtain all specific URIs by walking the hypermedia navigation links and reading the URIs from the navigation properties.
@@ -747,7 +743,43 @@ Success Status Code: 200 OK
 Schema Reference: Memory.v1_3_0.Memory
 ```
 
+* 38: Get Event Service 
+```
+RM URI: ^/redfish/v1/EventService
+Request data: None
+Response data: Event Service config
+Privilege required: Login
+Success Status Code: 200 OK
+Schema Reference: EventService.v1_1_0.EventService
+```
  
+* 39: Get Event Service Subscriptions
+```
+RM URI: ^/redfish/v1/EventService/Subscriptions
+Request data: None
+Response data: List of Event Service subscriptions
+Privilege required: Login
+Success Status Code: 200 OK
+Schema Reference: EventDestination.v1_1_0.EventDestination
+```
+* 40: Get Event Service Subscription entry
+```
+RM URI: ^/redfish/v1/EventService/Subscriptions/<subscriptionId>
+Request data: None
+Response data: subscription details
+Privilege required: Login
+Success Status Code: 200 OK
+Schema Reference: EventDestination.v1_1_0.EventDestination
+```
+* 41: Get Event Service Subscription entry
+```
+RM URI: ^/redfish/v1/EventService/Subscriptions/<subscriptionId>
+Request data: None
+Response data: subscription details
+Privilege required: Login
+Success Status Code: 200 OK
+Schema Reference: EventDestination.v1_1_0.EventDestination
+```
 ---
  
  ## POST APIs
@@ -855,6 +887,42 @@ Privilege required: Login
 Success Status Code: 204 No Content
 Schema Reference: Manager.v1_1_0.Manager
 ```
+
+* 208: POST: Create a subscription
+```
+RM URI: ^/redfish/v1/EventService
+Request data:
+        { "Context": "context string",
+          "Destination": "Destination URI e.g. http://someplace.com/blah",
+          "Protocol": "Redfish",
+          "EventTypes": [ //***one or more of the defined privileges below:
+               "ResourceAdded", "ResourceRemoved", "Alert"] }
+Response data: None
+Privilege required: Login
+Success Status Code: 204 No Content
+Schema Reference: EventDestination.v1_1_0.EventDestination
+```
+* 209: POST: Send Test Event
+```
+RM URI: ^/redfish/v1/EventService/Actions/EventService.SubmitTestEvent
+Request data:
+        { "Context": "context string",
+          "EventId": "A string",
+          "EventTimeStamp": "time stamp",
+          "Severity": "Some string",
+          "Message": "Some string",
+          "MessageId": "Some string",
+          "MessageArgs": "Some string",
+          "OriginOfCondition": "Some string",
+          "Destination": "Destination URI e.g. http://someplace.com/blah",
+          "Protocol": "Redfish",
+          "EventTypes": [ //***one or more of the defined privileges below:
+               "ResourceAdded", "ResourceRemoved", "Alert"] }
+Response data: None
+Privilege required: Login
+Success Status Code: 204 No Content
+Schema Reference: EventDestination.v1_1_0.EventDestination
+```
  
 ---
  
@@ -877,9 +945,9 @@ Request data:
       { "AuthFailureLoggingThreshold": <thresh_Int64>, 
       "AccountLockoutThreshold": <lockThresh_Int16>, 
       "AccountLockoutDuration": <duration_Int32>, 
-      "AccountLockoutCounterResetAfter>: <resetThresh_Int32> } 
+      "AccountLockoutCounterResetAfter": <resetThresh_Int32> } 
       where: all of these integers are >=0, and
-       "AccountLockoutDuration" is > AccountLockoutCounterResetAfter “MinPasswordLength” its read Only.
+       "AccountLockoutDuration" is > AccountLockoutCounterResetAfter "MinPasswordLength" its read Only.
 Response data: None
 Privilege required: ConfigureUsers
 Success Status Code: 204 No Content
@@ -979,6 +1047,23 @@ Privilege required: ConfigureManager
 Success Status Code: 204 No Content
 Schema Reference: EthernetInterface.v1_2_1.EthernetInterface
 ```
+* 110: PATCH: Configure Event Service
+* Not supported
+```
+RM URI: ^/redfish/v1/EventService
+Response data: None
+Schema Reference: EventService.v1_0_0.EventService
+```
+* 111: PATCH: Update subscription
+```
+RM URI: ^/redfish/v1/EventService/Subscriptions/<subscriptionId>
+Request data: 
+   Writable properties are: "Context"
+Response data: None
+Privilege required: ConfigureManager
+Success Status Code: 204 No Content
+Schema Reference: Destination.v1_1_0.Destination
+```
 ---
 
  
@@ -989,10 +1074,7 @@ Schema Reference: EthernetInterface.v1_2_1.EthernetInterface
 RM URI: ^/redfish/v1/SessionService/Sessions/<sessId>
 Request data: None
 Response data: None
-Privilege required: 
-     "ConfigureUsers "to delete ANY session
-      -- or --
-      "Login" for user to logout/delete that user 'sessions'
+Privilege required: ConfigureUsers to delete ANY session OR Login for user to logout/delete that user's sessions
 Success Status Code: 204 No Content
 Schema Reference: Session.v1_0_0.Session
 ```
@@ -1013,16 +1095,25 @@ Response data: None
 Privilege required: ConfigureUsers
 Success Status Code: 204 No Content
 Schema Reference: Role.v1_0_0.Role
- ```
+```
 
+* 304: DELETE: Delete an existing subscription
+```
+RM URI: ^/redfish/v1/Subscriptions/<subscriptionId>
+Request data: None
+Response data: None
+Privilege required: ConfigureUsers
+Success Status Code: 204 No Content
+Schema Reference: Destination.v1_0_0.Destination
+```
  
 # Tools
 Tools to use on systems supporting the Redfish standard fall into 3 categories; generic http(s) protocol data transfer, RestAPI browser-based plugins for development and Redfish protocol enabled RESTful API clients. Some examples are below.
 * Redfish Protocol REST clients
   * ***Redfishtool*** is an Open Source Python-based command-line tool that strives to go beyond generic http clients by automatically handling many of the hypermedia and Redfish-specific protocol aspects of the Redfish API. An API may require a client to execute multiple queries to a redfish service to walk the hypermedia links from the redfish root down to the detailed URI of a specific resource. And Redfishtool wraps these queries into simple command-line driven program.
-    * get Redfishtool at: `github.com/DMTF/Redfishtool`
+  * Get Redfishtool at: https://github.com/DMTF/Redfishtool
 * Generic HTTP(S) protocol data transfer clients
-  *  cURL is a popular command line tool for transferring data to and from a server and supports many protocols including HTTP and HTTPS. Given the simplicity of cURL, protocol support, user authentication, SSL connections (among other features) it’s a useful rudimentary tool for manipulating RESTful-based API services including those implementing the Redfish specification. Specifically, it can be used to demonstrate RM Redfish API calls for GET, POST, PATCH and DELETE.
+  * cURL is a popular command line tool for transferring data to and from a server and supports many protocols including HTTP and HTTPS. Given the simplicity of cURL, protocol support, user authentication, SSL connections (among other features) it’s a useful rudimentary tool for manipulating RESTful-based API services including those implementing the Redfish specification. Specifically, it can be used to demonstrate RM Redfish API calls for GET, POST, PATCH and DELETE.
   * PycURL is a Python interface to libcurl can be used to fetch objects identified by a URL; Similar to cURL.
 * HTTP(s) capture and modify clients
   * Fiddler is a Freeware HTTP debugging proxy server application developed by Telerik. It is also quite useful in Redfish API calls for GET, POST, PATCH and DELETE. It has a very simple and easy to use GUI.
@@ -1037,13 +1128,13 @@ Tools to use on systems supporting the Redfish standard fall into 3 categories; 
   * http://www.dmtf.org/standards/redfish
 * Redfish Tools
   * redfishtool, simulator, mockup creator, etc
-  * https://www.dmtf.org/content/new-redfish-tools-released-github
+  * http://www.dmtf.org/content/new-redfish-tools-released-github
 * Redfish White Paper
-  * dmtf.org/sites/default/files/standards/documents/DSP2044_1.0.0.pdf
+  * http://dmtf.org/sites/default/files/standards/documents/DSP2044_1.0.0.pdf
 * Redfish FAQ
-  * dmtf.org/sites/default/files/standards/documents/DSP2045_1.0.0.pdf
+  * http://www.dmtf.org/sites/default/files/standards/documents/DSP2045_1.0.0.pdf
 * Redfish Home Page
-  * www.dmtf.org/standards/redfish
+  * http://www.dmtf.org/standards/redfish
 * Redfish Specification
   * https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.4.pdf
 * Redfish Schema

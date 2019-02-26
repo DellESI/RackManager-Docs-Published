@@ -4,9 +4,9 @@ Copyright &copy; 2018 Dell Inc. or its subsidiaries. All rights reserved.
 ---
 
 ## About
-This document explains the step-by-step process of enabling, as well as disabling, RackManager's support for successful communications with an implementation of the Rack Scale Design Pod Manager when using RackManager Toolkit version 1.1.x.
+This document explains the step-by-step process of enabling, as well as disabling, RackManager's support for successful communications with an implementation of the Rack Scale Design Pod Manager when using RackManager Toolkit version 1.1.x or 1.2.x.
 
-Because of some of the RackManager Toolkit 1.1.x default settings, communications from a Pod Manager implementation to the RackManager will fail. Thus, if the use of an integration of the RackManager with Pod Manager is desired, one must take extra steps to enable the support.
+Because of some of the RackManager Toolkit default settings, communications from a Pod Manager implementation to the RackManager will fail. Thus, if the use of an integration of the RackManager with Pod Manager is desired, one must take extra steps to enable the support.
 
 ## Enabling
 
@@ -42,3 +42,11 @@ The same script can be used to disable, or undo the configuration changes made d
 ```
 
 Once complete, the RackManager should be back in its default configuration state, with regards to the specific configurations changed by the enabled option. Pod Manager will no longer be able to successfully communicate with the RackManager.
+
+## Known Issues
+
+* Note that while the script is running, if you do not interact in your terminal emulator shell, then after a while it ***may***
+  reconnect and show the script complete once the RM's network has been completely reset, but ***there is no guarantee*** that
+  this will happen and depends heavily on your terminal emulator settings. It is likely your terminal emulator will timeout or
+  otherwise stop trying to reconnect after a certain period of no contact while the RM is resetting its network, hence the possible
+  broken pipe and dropped session you may see. In either case, the required script actions are guaranteed to complete.

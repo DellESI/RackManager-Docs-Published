@@ -1,4 +1,4 @@
-Copyright 2017 Dell, Inc. All rights reserverd
+Copyright &copy; 2017-2018 Dell Inc. or its subsidiaries. All rights reserved.
  
 # RMG5MCPortMapService -- RackManager's G5 MC Port Map Service
 
@@ -112,8 +112,24 @@ RMg5mcPortMap - utility to enable/disable port forwarding for specific targets
 * Outgoing port forwarding rules can only be applied to one mgmt interface (mgmt1 or mgmt2) per protocol
   * For instance, you can configure DNS packets from a mc to route out either mgmt1 or mgmt2, not both
 * Outgoing port forwarding requires additional configuring to the mc itself:
-  * mc must be configured to route outgoing traffic internally through the Rackmanager instead of its own external port
-  * If forwarding DNS packets from a mc through and out the RackManager, you may also need to set the mc's DNS server
+  * Default gateway:
+    * mc must be configured to route outgoing traffic internally through the Rackmanager instead of its own external port
+    * To get MC's default gateway:
+      * ssh to MC
+      * then `ip route` and look for `default` route
+    * To set MC's default gateway:
+      * ssh to MC
+      * delete default route: `ip route del default`
+      * add new default route: `ip route add default via 10.253.0.31 dev eth1`
+  * DNS:
+    * If forwarding DNS packets from a mc through and out the RackManager, you may also need to set the mc's DNS server
+    * To get MC's DNS settings:
+      * ssh to MC
+      * `cat /etc/resolv`
+    * To set MC's DNS settings:
+      * first get the RM's DNS settings with `cat /etc/resolv`
+      * ssh to MC
+      * edit the MC's `/etc/resolv` file to mirror that of the RM's
 
 ## Usage
 * ` systemctl {restart, start, stop} RMG5MCPortMapService`

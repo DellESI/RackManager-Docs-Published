@@ -51,7 +51,6 @@ getswitchlist               -- report a JSON object of switches, their IPs and t
 getMgmtPortStatus           -- report a JSON object of link status and enabled state of Management Ports
                                 Mgmt1 or Mgmt2 - report only one port
                                   -l report as a list rather than JSON
-setMgmtPortState            -- Mgmt1 (or Mgmt2)  Enabled (or Disabled)
 mctimedate                  -- get:     report the MC date/time
                                set:     set the MC date/time
                                mctosys: synch the MC date/time to the RM
@@ -67,6 +66,7 @@ syncRfAccountsCache         -- not implemented
 
 
 ### [Notes]:
+    The setMgmtPortState command which toggled the internal switch ports on/off is obsolete in RMTK1.2+.
     setNodeCredentials command gets credentials from `/etc/opt/dell/rm-tools/Credentials/bmcuser/.passwd` file.
           username:password are seperated by colon(:) character 
 

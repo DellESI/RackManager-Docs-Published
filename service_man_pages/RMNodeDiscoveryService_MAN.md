@@ -1,4 +1,4 @@
-Copyright 2017 Dell, Inc. All rights reserverd
+Copyright &copy; 2017-2018 Dell Inc. or its subsidiaries. All rights reserved.
  
 # RMNodeDiscoveryService -- RackManager's BMC Node Discovery Service
 

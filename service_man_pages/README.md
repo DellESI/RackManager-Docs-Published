@@ -1,3 +1,5 @@
+Copyright &copy; 2018 Dell Inc. or its subsidiaries. All rights reserved.
+
 # RackManager Toolkit:  Service MAN Pages
 This folder contains MAN pages for ***Services*** that are implemented as part of the RackManager Toolkit:
 * These services are integrated with systemd and configured by RMconfig
@@ -22,3 +24,9 @@ used to start, stop, restart, etc the services.
   * RMMgtNetworkStart -- is a script used to startup the namespaced network stacks on the RM.  It is not a full service.
     * this subsystem is called by systemd as part of normal network start so that the namespaced network stacks on RM used to implement the vlan tunnel from RM to the physical Mgmt1 and Mgmt2 ports on the DSS9000 IM switch is configured correctly.
 
+# MAN Pages (***coming soon***)
+  * RMRedfishService  `-- see ./RMRedfishService_MAN.md`
+  * RMNodeDiscoveryService  `-- see ./RMNodeDiscoveryService_MAN.md`
+  * RMMgmtPortMonitor `-- see ./RMMgmtPortMonitor_MAN.md`
+  * RMMgtNetworkStart `-- see ./RMMgtNetworkStart_MAN.md`
+  * RMTimeService  `--see ./RMTimeService_MAN.md`

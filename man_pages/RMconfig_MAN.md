@@ -1,4 +1,4 @@
-Copyright 2016 Dell, Inc. All rights reserved.
+Copyright &copy; 2016-2018 Dell Inc. or its subsidiaries. All rights reserved.
 
 # RMconfig -- RackManager Configuration Utility
 ---
@@ -21,6 +21,8 @@ Once the "RMbase" subsystem has been configured, ***RMconfig*** by default will 
 
 However, note that users can run the command with specific options/arguments to configure a single subsystem, or to start, stop, or restart a service for debug (e.g. `RMconfig -s <subsystem> config` or `RMconfig -s <subsystem> restart` ).
 
+Additionally, note that certain subsystem configurations (such as RMMgtNetwork) may require a system reboot in order to fully take affect. If you want the system to auto-reboot following completion of the RMconfig action, you can use the "-R" option.
+
 All events will be logged to `/var/log/rackmanager/RMconfig.log`
 
 ## Usage:
@@ -39,7 +41,8 @@ OPTIONS:
         -F          -- force reconfig -- without -F, subsystems previously configured will not configure again
         -s <subSys> -- specify the subsystem - if -s option is used, the <action> must also be specified --
                        if -s <subSys> is not specified, RMconfig runs "config" action on all subsystems 
-                       in RM.conf with a valid profile name set other than "None". 
+                       in RM.conf with a valid profile name set other than "None".
+	-R          -- will auto-reboot the RM once action is completed.
         -v          -- verbose output - can repeat for additional level of verbosity
               -v    -- verbose level 1 is for high-level debug info from the main script - including progress
               -vv   -- verbose level 2 is for subsystem specific flow progress
@@ -122,15 +125,17 @@ OPTIONS:
     * configures the RMMgmtPortMonitor service to monitor the status of mgmt1/mgmt2
 
   * RMUsersGroupsPaths
-    * add the default RM groups for admin, operator, and readonly roles (RM_ADMIN, RM_OPER, and RM_READONLY)
-    * add the default RM users for each role (rackmanager_adm, rackmanager_oper, rackmanager_readonly)
+    * add the default RM Linux OS groups for admin, operator, and readonly roles (RM_ADMIN, RM_OPER, and RM_READONLY)
+    * add the default RM Linux OS users for each role (rackmanager_adm, rackmanager_oper, rackmanager_readonly)
     * setup the default path for all users to pickup `/opt/dell/rm-tools/bin`
+    * NOTE: Only Linux OS users will be created and configured by this subcommand.  Redfish Service users are managed in the RMRedfishService AccountsDB.
 
   * RMCredentials
     * generate ssh keys and ssh config files for use when communicating with the MCs using ssh passwordless authentication
     * configure the RM credential vault w/ proper credentials that RMg5mc can use to communicate w/ managed MCs
     * configure the RM credential vault w/ proper credentials that RM utilities and services can use to communicate w/ iDracs
     * configure the RM credential vault w/ proper credentials that RM utilities and services can use to communicate w/ RM Management Network Switches
+    * NOTE: only Linux OS users' credentials are configured by this subcommand
 
   * RMg5mc
     * scp the ssh public key files used by RMg5cli to the the Managed MCs
@@ -140,6 +145,7 @@ OPTIONS:
   * RMRedfishService
     * copy the Redfish.conf file indicated by the specified profile to `/etc/opt/dell/rm-tools/Redfish.conf`
     * copy the RedDrum.conf file indicated by the specified profile to `/etc/opt/dell/rm-tools/RedDrum.conf`
+    * setup Redfish user accounts in the AccountsDB with default passwords if the AccountsDB does not already exist
     * config Linux boot script to auto start RMRedfishService
     
   * RMNodeDiscoveryService
