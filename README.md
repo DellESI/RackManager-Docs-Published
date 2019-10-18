@@ -1,8 +1,8 @@
 Copyright &copy; 2017-2018 Dell Inc. or its subsidiaries. All rights reserved.
 
-# RackManager-Docs ---Dell Internal--- ---Not Public---
+# RackManager-Docs ---Dell External --- ---Public---
 
-This is a Dell ESI internal repo containing documentation for the DSS9000 RackManager.
+This is a Dell ESI External Documentation repo containing documentation for the DSS9000 RackManager.
 
 * For each development and production release of the RackManager Toolkit, we will create in this repo:
   * a branch with the release name containing the docs for that release
@@ -15,8 +15,4 @@ This is a Dell ESI internal repo containing documentation for the DSS9000 RackMa
   
 * RackManager_Main_MAN.md is the top-level MAN page which briefly touches on all components of the DSS9000 RackManager and RackManager Toolkit.
 
-* All document formats are GitHub markdown following the RackManager development plan.
 
-* Dell internal developers, integrators, testers and Dell partners may have access to this repo under a Dell NDA.
-  * this is ***NOT*** a public GitHub site
-  * all data is Dell Proprietary
